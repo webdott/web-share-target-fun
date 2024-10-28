@@ -23,6 +23,32 @@
       "type": "image/png"
     }
   ],
+  "screenshots": [
+    {
+      "src": "/favicons/screenshot-desktop.png",
+      "sizes": "2029x1281",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "WebShareTarget Fun"
+    },
+    {
+      "src": "/favicons/screenshot-mobile.png",
+      "sizes": "1179x2556",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "WebShareTarget Fun"
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
   "theme_color": "#1c1717",
   "background_color": "#221b1b",
   "display": "standalone"

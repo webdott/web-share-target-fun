@@ -21,7 +21,6 @@ export const InstallHeader = () => {
   );
 
   const downloadPWA = useCallback(async () => {
-    console.log("downloadPWA", deferredPrompt);
     if (deferredPrompt) {
       await deferredPrompt.prompt();
 

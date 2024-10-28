@@ -2,8 +2,9 @@ import { type Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 
 import { Header } from "@/components/layout/header";
-import "@/styles/globals.css";
 import { InstallHeader } from "@/components/layout/install-header";
+
+import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "WebShareTarget Fun",
@@ -44,7 +45,7 @@ export default function RootLayout({
 
         <InstallHeader />
 
-        <main>{children}</main>
+        {children}
       </body>
     </html>
   );
