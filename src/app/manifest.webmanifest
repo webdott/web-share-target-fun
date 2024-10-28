@@ -26,14 +26,14 @@
   "screenshots": [
     {
       "src": "/favicons/screenshot-desktop.png",
-      "sizes": "2029x1281",
+      "sizes": "2292x1398",
       "type": "image/png",
       "form_factor": "wide",
       "label": "WebShareTarget Fun"
     },
     {
       "src": "/favicons/screenshot-mobile.png",
-      "sizes": "1179x2556",
+      "sizes": "447x834",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "WebShareTarget Fun"

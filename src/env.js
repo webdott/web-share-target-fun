@@ -14,6 +14,9 @@ export const env = createEnv({
     TWITTER_CLIENT_ID: z.string(),
     TWITTER_CLIENT_SECRET: z.string(),
     TWITTER_BEARER_TOKEN: z.string(),
+    TWITTER_ACCESS_TOKEN: z.string(),
+    TWITTER_ACCESS_TOKEN_SECRET: z.string(),
+    TWITTER_REFRESH_TOKEN: z.string(),
   },
 
   /**
@@ -35,6 +38,9 @@ export const env = createEnv({
     TWITTER_CLIENT_ID: process.env.TWITTER_CLIENT_ID,
     TWITTER_CLIENT_SECRET: process.env.TWITTER_CLIENT_SECRET,
     TWITTER_BEARER_TOKEN: process.env.TWITTER_BEARER_TOKEN,
+    TWITTER_ACCESS_TOKEN: process.env.TWITTER_ACCESS_TOKEN,
+    TWITTER_ACCESS_TOKEN_SECRET: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+    TWITTER_REFRESH_TOKEN: process.env.TWITTER_REFRESH_TOKEN,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

@@ -1,6 +1,8 @@
 "use client";
 
+import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
@@ -9,6 +11,11 @@ import { RxExternalLink } from "react-icons/rx";
 interface TweetResult {
   id: string;
   text: string;
+  name: string;
+  date: string;
+  img: string;
+  url: string;
+  error?: string;
 }
 
 const HomePage = () => {
@@ -24,10 +31,14 @@ const HomePage = () => {
 
         if (!tweetId) return ["", null];
 
-        const response = await fetch(`/tweet?id=${tweetId}`);
-        const data = (await response.json()) as TweetResult | null;
+        const data = await fetch(`/api/tweet/${tweetId}`);
+        const tweetData = (await data.json()) as {
+          tweet?: TweetResult;
+          error?: string;
+        };
+        if (!!tweetData.error) return ["", null];
 
-        return [tweetId.toString(), data];
+        return [tweetId.toString(), tweetData.tweet!];
       } catch (error) {
         console.error(error);
         return ["", null];
@@ -92,6 +103,14 @@ const HomePage = () => {
     void fetchAndSaveTweet(text);
   }, [text, fetchAndSaveTweet]);
 
+  useEffect(() => {
+    const tweets = JSON.parse(
+      localStorage.getItem("webshare_tweets") ?? "{}",
+    ) as Record<string, TweetResult>;
+
+    setBookmarkedTweets(Object.values(tweets));
+  }, []);
+
   return (
     <div className="container flex flex-col items-center gap-12 p-4 py-10">
       <h2 className="self-start text-left text-3xl">Bookmarked Tweets</h2>
@@ -103,31 +122,31 @@ const HomePage = () => {
             className="flex w-full items-stretch gap-4 rounded-md px-2 py-2 hover:bg-neutral-700 hover:shadow-md"
           >
             <Image
-              src="/favicons/web-app-manifest-144x144.png"
+              src={tweet.img}
               alt="Tweet"
               width={92}
               height={92}
-              className="rounded-md"
+              className="min-h-[92px] min-w-[92px] rounded-md"
             />
 
             <div className="flex flex-col justify-between gap-y-2 py-2">
-              <p>Tweet 1</p>
+              <p className="font-openSans">{tweet.text}</p>
 
               <div className="flex items-center gap-2 italic">
-                <p>@webdott</p>
+                <p>@{tweet.name}</p>
                 &middot;
-                <p>5 days ago</p>
+                <p>{formatDistanceToNow(tweet.date)} ago</p>
               </div>
             </div>
 
             <div className="ml-auto flex flex-col items-center justify-between justify-self-end py-2">
-              <button className="hover:text-blue-500">
+              <Link href={tweet.url} className="block hover:text-blue-500">
                 <RxExternalLink className="h-5 w-5" />
-              </button>
+              </Link>
 
               <button
-                className="hover:text-red-500"
-                onClick={() => removeTweet("1")}
+                className="block hover:text-red-500"
+                onClick={() => removeTweet(tweet.id)}
               >
                 <MdClose className="h-5 w-5" />
               </button>

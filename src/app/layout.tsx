@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { type Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
+import { Open_Sans } from "next/font/google";
 
 import { InstallHeader } from "@/components/layout/install-header";
 
@@ -35,11 +36,16 @@ export const metadata: Metadata = {
   ],
 };
 
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-open-sans",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} ${openSans.variable}`}>
       <body>
         <InstallHeader />
 
