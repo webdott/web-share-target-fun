@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { type Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 
@@ -35,14 +36,16 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children, 
+  children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
         <InstallHeader />
 
-        {children}
+        <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        </main>
       </body>
     </html>
   );
