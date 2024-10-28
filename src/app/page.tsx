@@ -98,38 +98,47 @@ const HomePage = () => {
         <h2 className="self-start text-left text-3xl">Bookmarked Tweets</h2>
 
         <ul className="flex w-full flex-col gap-4">
-          <li className="flex w-full items-stretch gap-4 rounded-md px-2 py-2 hover:bg-neutral-700 hover:shadow-md">
-            <Image
-              src="/favicons/web-app-manifest-144x144.png"
-              alt="Tweet"
-              width={92}
-              height={92}
-              className="rounded-md"
-            />
+          {bookmarkedTweets.map((tweet) => (
+            <li
+              key={tweet.id}
+              className="flex w-full items-stretch gap-4 rounded-md px-2 py-2 hover:bg-neutral-700 hover:shadow-md"
+            >
+              <Image
+                src="/favicons/web-app-manifest-144x144.png"
+                alt="Tweet"
+                width={92}
+                height={92}
+                className="rounded-md"
+              />
 
-            <div className="flex flex-col justify-between gap-y-2 py-2">
-              <p>Tweet 1</p>
+              <div className="flex flex-col justify-between gap-y-2 py-2">
+                <p>Tweet 1</p>
 
-              <div className="flex items-center gap-2 italic">
-                <p>@webdott</p>
-                &middot;
-                <p>5 days ago</p>
+                <div className="flex items-center gap-2 italic">
+                  <p>@webdott</p>
+                  &middot;
+                  <p>5 days ago</p>
+                </div>
               </div>
-            </div>
 
-            <div className="ml-auto flex flex-col items-center justify-between justify-self-end py-2">
-              <button className="hover:text-blue-500">
-                <RxExternalLink className="h-5 w-5" />
-              </button>
+              <div className="ml-auto flex flex-col items-center justify-between justify-self-end py-2">
+                <button className="hover:text-blue-500">
+                  <RxExternalLink className="h-5 w-5" />
+                </button>
 
-              <button
-                className="hover:text-red-500"
-                onClick={() => removeTweet("1")}
-              >
-                <MdClose className="h-5 w-5" />
-              </button>
-            </div>
-          </li>
+                <button
+                  className="hover:text-red-500"
+                  onClick={() => removeTweet("1")}
+                >
+                  <MdClose className="h-5 w-5" />
+                </button>
+              </div>
+            </li>
+          ))}
+
+          {bookmarkedTweets.length === 0 && (
+            <p className="text-center text-lg">No tweets bookmarked yet</p>
+          )}
         </ul>
       </div>
     </main>
