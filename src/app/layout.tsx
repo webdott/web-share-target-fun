@@ -1,7 +1,6 @@
 import { type Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 
-import { Header } from "@/components/layout/header";
 import { InstallHeader } from "@/components/layout/install-header";
 
 import "@/styles/globals.css";
@@ -41,8 +40,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
-        <Header />
-
         <InstallHeader />
 
         {children}

@@ -95,8 +95,10 @@ const HomePage = () => {
   return (
     <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
       <div className="container flex flex-col items-center gap-12 p-4 py-10">
+        <h2 className="self-start text-left text-3xl">Bookmarked Tweets</h2>
+
         <ul className="flex w-full flex-col gap-4">
-          <li className="flex w-full items-stretch gap-4 rounded-md px-2 py-2 hover:bg-neutral-800 hover:shadow-md">
+          <li className="flex w-full items-stretch gap-4 rounded-md px-2 py-2 hover:bg-neutral-700 hover:shadow-md">
             <Image
               src="/favicons/web-app-manifest-144x144.png"
               alt="Tweet"
